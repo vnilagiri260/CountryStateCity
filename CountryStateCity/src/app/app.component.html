@@ -1,9 +1,7 @@
 <div class="row">
-    <option value="" disabled selected>select country</option>
-    <app-country *ngFor = "let country of countries" [country]="country" (countryselected)="OnCountrySelected(country)"></app-country>
-    <option value="" disabled selected>select state</option>
-    <app-state *ngFor = "let state of states" [state]="state" [country]="selectedCountry" (stateselected)="OnStateSelected(state)"></app-state>
-    <option value="" disabled selected>select city</option>
-    <app-city *ngFor = "let city of cities" [city]="city" [state]="selectedState" (cityselected)="OnCitySelected(city)"></app-city>  
-    
+
+    <app-country (countryselected)="OnCountrySelected($event)"></app-country>
+    <app-state [selectedCountry]="selectedCountry" (stateselected)="OnStateSelected($event)"></app-state>
+    <app-city [selectedState]="selectedState" (cityselected)="OnCitySelected($event)"></app-city>
+
 </div>

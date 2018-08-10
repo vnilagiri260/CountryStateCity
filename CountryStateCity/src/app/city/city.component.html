@@ -1,1 +1,6 @@
-<option [value]="city.name" (click)="highlightSelected(city)" name="city.name" *ngIf="city.statetName === state.name">{{city.name}}</option>
+<div>
+        <label>Select City: </label>
+        <select [(ngModel)]="cityName"  (change)="highlightSelected()">
+            <option *ngFor = "let city of filteredCities" value={{city.name}}> {{city.name}} </option>
+        </select>
+        </div>

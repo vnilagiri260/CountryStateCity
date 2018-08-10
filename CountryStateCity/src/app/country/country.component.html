@@ -1,2 +1,7 @@
 <!--<option value="" disabled selected>select country</option>-->
-<option [value]="country.name" (click)="highlightSelected(country)" name="country.name">{{country.name}}</option>
+<div>
+<label>Select Country: </label>
+<select [(ngModel)]="countryName"  (change)="highlightSelected()">
+    <option *ngFor = "let country of countries" value={{country.cname}}> {{country.cname}} </option>
+</select>
+</div>

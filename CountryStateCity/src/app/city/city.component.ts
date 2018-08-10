@@ -8,16 +8,33 @@ import { State } from '../model/state.model';
   styleUrls: ['./city.component.css']
 })
 export class CityComponent implements OnInit {
-  @Input() city: City;
-  @Input() state: State
-  @Output() cityselected: EventEmitter<City> = new EventEmitter<City>();
+  @Input() selectedState: string;
+  @Output() cityselected: EventEmitter<string> = new EventEmitter<string>();
+
+  cityName: string;
+  filteredCities: City[];
+
+  cities: City[] = [
+    { name: "Los Angeles", statetName: "California" },
+    { name: "San Francisco", statetName: "California" },
+    { name: "Miami", statetName: "Florida" },
+    { name: "Tampa", statetName: "Florida" },
+    { name: "Hyderabad", statetName: "Telangana" },
+    { name: "Secundrabad", statetName: "Telangana" },
+    { name: "Vijayawada", statetName: "Andhra Pradesh" },
+    { name: "Vizag", statetName: "Andhra Pradesh" }
+  ]
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  highlightSelected(selectedCity) {
-    this.cityselected.emit(selectedCity);
+  ngOnChanges() {
+    this.filteredCities = this.cities.filter(city => city.statetName === this.selectedState);
+  }
+
+  highlightSelected() {
+    this.cityselected.emit(this.cityName);
   }
 }

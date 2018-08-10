@@ -1,1 +1,7 @@
-<option [value]="state.name" (click)="highlightSelected(state)" name="state.name" *ngIf="state.countrtName === country.name">{{state.name}}</option>
+<!--<option value="" disabled selected>select country</option>-->
+<div>
+        <label>Select State: </label>
+        <select [(ngModel)]="stateName"  (change)="highlightSelected()">
+            <option *ngFor = "let state of filteredStates" value={{state.name}}> {{state.name}} </option>
+        </select>
+        </div>

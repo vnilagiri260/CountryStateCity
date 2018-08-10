@@ -7,16 +7,22 @@ import { Country } from '../model/country.model';
   styleUrls: ['./country.component.css']
 })
 export class CountryComponent implements OnInit {
-  @Input() country: Country;
-  @Output() countryselected: EventEmitter<Country> = new EventEmitter<Country>();
-
-  //countryList: any[];
+  @Input() country: Country;  
+  @Output() countryselected: EventEmitter<string> = new EventEmitter<string>();
+  countryName: string;
+  countries: Country[];
   constructor() { }
 
   ngOnInit() {
+    this.countries = [
+      { cname: "USA" },
+      { cname: "India" }
+    ]
   }
 
-  highlightSelected(selectedCountry) {
-    this.countryselected.emit(selectedCountry);
+ 
+
+  highlightSelected() {
+    this.countryselected.emit(this.countryName);
   }
 }

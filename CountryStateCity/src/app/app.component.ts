@@ -10,50 +10,28 @@ import { City } from './model/city.model';
 })
 export class AppComponent implements OnInit {
   title = 'app';
-  selectedCountry: Country;
-  selectedState: State;
-  selectedCity: City;
+  selectedCountry: string;
+  selectedState: string;
+  selectedCity: string;
 
   constructor() { }
 
   ngOnInit() {
   };
 
-  countries: Country[] = [
-    { name: "USA" },
-    { name: "India" }
-  ];
-
-  states: State[] = [
-    { name: "California", countrtName: "USA" },
-    { name: "Florida", countrtName: "USA" },
-    { name: "Telangana", countrtName: "India" },
-    { name: "Andhra Pradesh", countrtName: "India" }
-  ];
-
-  cities: City[] = [
-    { name: "Los Angeles", statetName: "California" },
-    { name: "San Francisco", statetName: "California" },
-    { name: "Miami", statetName: "Florida" },
-    { name: "Tampa", statetName: "Florida" },
-    { name: "Hyderabad", statetName: "Telangana" },
-    { name: "Secundrabad", statetName: "Telangana" },
-    { name: "Vijayawada", statetName: "Andhra Pradesh" },
-    { name: "Vizag", statetName: "Andhra Pradesh" }
-  ]
-
-  OnCountrySelected(data: Country) {
+  OnCountrySelected(data: string) {
     this.selectedCountry = data;
-    console.log(data.name);
+    this.selectedState = null;
+    console.log(data);
   }
 
-  OnStateSelected(data: State) {
+  OnStateSelected(data: string) {
     this.selectedState = data;
-    console.log(data.name);
+    console.log(data);
   }
 
-  OnCitySelected(data: City) {
+  OnCitySelected(data: string) {
     this.selectedCity = data;
-    console.log(data.name);
+    console.log(data);
   }
 }
